@@ -40,7 +40,7 @@ export class HomeComponent implements OnInit {
       "description": "Ala bala",
       "years": 5,
       "native_lang": 0,
-      "linkedin": "aaa.kdflh"
+      "linkedIn": "aaa.kdflh"
     })
 
     this.developerList.push({
@@ -55,7 +55,7 @@ export class HomeComponent implements OnInit {
       "description": "t43t4t",
       "years": 6,
       "native_lang": 1,
-      "linkedin": ""
+      "linkedIn": ""
     })
 
     console.log(this.developerList)

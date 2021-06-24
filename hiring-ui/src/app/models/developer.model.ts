@@ -10,5 +10,5 @@ export interface Developer {
   "description": string;
   "years": number;
   "native_lang": number;
-  "linkedin": string;
+  "linkedIn": string;
 }
