@@ -4,7 +4,6 @@ import {MatDialog, MAT_DIALOG_DATA} from '@angular/material/dialog';
 
 import { Developer } from '../models/developer.model';
 
-import { EditDeveloperComponent } from '../dialogs/edit-developer/edit-developer.component';
 import { ViewDeveloperComponent } from '../dialogs/view-developer/view-developer.component';
 import { HireDeveloperComponent } from '../dialogs/hire-developer/hire-developer.component';
 
@@ -67,7 +66,10 @@ export class HomeComponent implements OnInit {
     console.log(developer);
 
     let dialogRef = this.dialog.open(ViewDeveloperComponent, {
-      data: developer,
+      data: {
+        developer: developer,
+        mode: 'view'
+      },
       width: '550px',
     });
 
@@ -87,8 +89,11 @@ export class HomeComponent implements OnInit {
   editDeveloper(developer: Developer){
     console.log(developer);
 
-    let dialogRef = this.dialog.open(EditDeveloperComponent, {
-      data: developer,
+    let dialogRef = this.dialog.open(ViewDeveloperComponent, {
+      data: {
+        developer: developer,
+        mode: 'edit'
+      },
       width: '550px',
     });
 

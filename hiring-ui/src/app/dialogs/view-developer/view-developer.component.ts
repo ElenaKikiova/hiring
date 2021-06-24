@@ -15,7 +15,7 @@ export class ViewDeveloperComponent {
 
   constructor(
     public dialogRef: MatDialogRef<ViewDeveloperComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: Developer
+    @Inject(MAT_DIALOG_DATA) public data: any
     ) {
 
     this.technologies = ["Javascript", "Java", ".NET", "Flutter", "Python", "PHP"];

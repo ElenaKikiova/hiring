@@ -14,7 +14,6 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {MatCardModule} from '@angular/material/card';
 import {MatDividerModule} from '@angular/material/divider';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { EditDeveloperComponent } from './dialogs/edit-developer/edit-developer.component';
 import { ViewDeveloperComponent } from './dialogs/view-developer/view-developer.component';
 import { HireDeveloperComponent } from './dialogs/hire-developer/hire-developer.component';
 
@@ -24,7 +23,6 @@ import { HireDeveloperComponent } from './dialogs/hire-developer/hire-developer.
     AppComponent,
     HomeComponent,
     ViewDeveloperComponent,
-    EditDeveloperComponent,
     HireDeveloperComponent
   ],
   imports: [
