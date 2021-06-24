@@ -1,32 +1,46 @@
-<html>
-
-  <head>
-    <title> Prime Hiring </title>
-  </head>
-
-  <body>
 
     <mat-toolbar>
-      <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
-        <mat-icon>menu</mat-icon>
-      </button>
+      
       <span>Prime Hiring</span>
       <span class="example-spacer"></span>
-      <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
-        <mat-icon>favorite</mat-icon>
-      </button>
-      <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
-        <mat-icon>share</mat-icon>
+      <button mat-button aria-label="Add a developer" (click)="addDeveloper()">
+        <mat-icon>add</mat-icon> Add a developer
       </button>
     </mat-toolbar>
 
 
     <div id="container">
       
-      <router-outlet></router-outlet>
+      <mat-list>
+
+        <mat-list-item *ngFor="let developer of developerList"> 
+      
+          <span> {{ developer.name }} </span>
+      
+          <div class="action-buttons">
+      
+            <button 
+              mat-icon-button class="preview-button" aria-label="Preview"
+              (click)="previewDeveloper(developer)">
+              <mat-icon>visibility</mat-icon>
+            </button>
+      
+            <button 
+              mat-icon-button class="edit-button" aria-label="Edit"
+              (click)="editDeveloper(developer)">
+              <mat-icon>edit</mat-icon>
+            </button>
+      
+            <button 
+            mat-icon-button class="delete-button" aria-label="Delete"
+            (click)="deleteDeveloper(developer)">
+              <mat-icon>delete</mat-icon>
+            </button>
+      
+          </div>
+      
+        </mat-list-item>
+      
+      </mat-list>      
 
     </div>
-
-  </body>
-
-</html>

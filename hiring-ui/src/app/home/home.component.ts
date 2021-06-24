@@ -6,6 +6,7 @@ import { Developer } from '../models/developer.model';
 
 import { ViewDeveloperComponent } from '../dialogs/view-developer/view-developer.component';
 import { HireDeveloperComponent } from '../dialogs/hire-developer/hire-developer.component';
+import { DeleteDeveloperComponent } from '../dialogs/delete-developer/delete-developer.component';
 
 @Component({
   selector: 'app-home',
@@ -102,6 +103,19 @@ export class HomeComponent implements OnInit {
 
       
     });
+  }
+
+  deleteDeveloper(developer: Developer){
+
+    let dialogRef = this.dialog.open(DeleteDeveloperComponent, {
+      data: developer
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed', result);
+      
+    });
+
   }
 
   wantToHireDeveloper(developer: Developer){
