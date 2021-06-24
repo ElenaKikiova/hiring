@@ -5,6 +5,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ReactiveFormsModule } from '@angular/forms';
+
 // Material modules
 import {MatIconModule} from '@angular/material/icon';
 import {MatListModule} from '@angular/material/list';
@@ -13,7 +16,10 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatCardModule} from '@angular/material/card';
 import {MatDividerModule} from '@angular/material/divider';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import {MatSelectModule} from '@angular/material/select';
+
 import { ViewDeveloperComponent } from './dialogs/view-developer/view-developer.component';
 import { HireDeveloperComponent } from './dialogs/hire-developer/hire-developer.component';
 
@@ -28,6 +34,7 @@ import { HireDeveloperComponent } from './dialogs/hire-developer/hire-developer.
   imports: [
     BrowserModule,
     AppRoutingModule,
+    ReactiveFormsModule,
     MatIconModule,
     MatListModule,
     MatToolbarModule,
@@ -35,6 +42,9 @@ import { HireDeveloperComponent } from './dialogs/hire-developer/hire-developer.
     MatDialogModule,
     MatCardModule,
     MatDividerModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
     BrowserAnimationsModule
   ],
   providers: [],
