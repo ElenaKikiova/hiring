@@ -1,0 +1,31 @@
+<h1>Hire developers</h1>
+<div mat-dialog-content>
+
+  <mat-chip-list #chipList aria-label="Developers selection">
+    <mat-chip
+      *ngFor="let developer of data.developers"
+      selectable="true"
+      removable="true"
+      (removed)="removeDeveloper(developer)">
+      {{developer.name}}
+      <mat-icon matChipRemove >cancel</mat-icon>
+    </mat-chip>
+  </mat-chip-list>
+
+  <p>Enter a start - end range</p>
+  <mat-date-range-input [formGroup]="range" [rangePicker]="picker">
+    <input matStartDate formControlName="start" placeholder="Start date">
+    <input matEndDate formControlName="end" placeholder="End date">
+  </mat-date-range-input>
+  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+  <mat-date-range-picker #picker></mat-date-range-picker>
+
+  <mat-error *ngIf="range.controls.start.hasError('matStartDateInvalid')">Invalid start date</mat-error>
+  <mat-error *ngIf="range.controls.end.hasError('matEndDateInvalid')">Invalid end date</mat-error>
+
+  <div mat-dialog-actions>
+    <button mat-button (click)="closeDialog()">Cancel</button>
+    <button mat-button mat-dialog-close="hire" >Confirm</button>
+  </div>
+ 
+</div>

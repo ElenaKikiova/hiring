@@ -3,9 +3,26 @@
       
       <span>Prime Hiring</span>
       <span class="example-spacer"></span>
-      <button mat-button aria-label="Add a developer" (click)="addDeveloper()">
-        <mat-icon>add</mat-icon> Add a developer
-      </button>
+
+      <div class="toolbar-buttons">
+
+        <button 
+          mat-button aria-label="Hire developers" 
+          (click)="hireDevelopers()" *ngIf="hiringMode == false">
+          <mat-icon>work</mat-icon> Hire
+        </button>
+
+        <button 
+          color="primary" mat-flat-button aria-label="Hire developers" 
+          (click)="confirmHiring()" *ngIf="hiringMode == true">
+          <mat-icon>work</mat-icon> Confirm hiring
+        </button>
+
+        <button mat-button aria-label="Add a developer" (click)="addDeveloper()">
+          <mat-icon>add</mat-icon> Add a developer
+        </button>
+
+      </div>
     </mat-toolbar>
 
 
@@ -14,6 +31,8 @@
       <mat-list>
 
         <mat-list-item *ngFor="let developer of developerList"> 
+
+          <mat-checkbox (click)="checkHiring(developer)"></mat-checkbox>
       
           <span> {{ developer.name }} </span>
       

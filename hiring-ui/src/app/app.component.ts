@@ -5,7 +5,7 @@ import {MatDialog, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { Developer } from './models/developer.model';
 
 import { ViewDeveloperComponent } from './dialogs/view-developer/view-developer.component';
-import { HireDeveloperComponent } from './dialogs/hire-developer/hire-developer.component';
+import { HireDevelopersComponent } from './dialogs/hire-developers/hire-developers.component';
 import { DeleteDeveloperComponent } from './dialogs/delete-developer/delete-developer.component';
 
 @Component({
@@ -17,6 +17,10 @@ export class AppComponent implements OnInit {
   title = 'hiring-ui'
 
   developerList: Developer[] = [];
+
+  hiringMode: Boolean = true;
+
+  hiringList: Developer[] = [];
 
   constructor(
     public dialog: MatDialog
@@ -66,7 +70,24 @@ export class AppComponent implements OnInit {
 
   addDeveloper(){
 
-    console.log("a");
+    let dialogRef = this.dialog.open(ViewDeveloperComponent, {
+      data: {
+        developer: null,
+        mode: 'create'
+      },
+      width: '550px',
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed', result);
+
+      if(result == "hire"){
+
+        
+
+      }
+      
+    });
   }
 
   previewDeveloper(developer: Developer){
@@ -80,16 +101,6 @@ export class AppComponent implements OnInit {
       width: '550px',
     });
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed', result);
-
-      if(result == "hire"){
-
-        this.wantToHireDeveloper(developer);
-
-      }
-      
-    });
   }
 
   
@@ -106,8 +117,6 @@ export class AppComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed', result);
-
-      
     });
   }
 
@@ -124,10 +133,32 @@ export class AppComponent implements OnInit {
 
   }
 
-  wantToHireDeveloper(developer: Developer){
+  hireDevelopers(){
 
-    let dialogRef = this.dialog.open(HireDeveloperComponent, {
-      data: developer,
+    this.hiringMode = true;
+
+  }
+
+  checkHiring(developer: Developer){
+
+    let index = this.hiringList.indexOf(developer);
+    if(index == -1){
+      this.hiringList.push(developer);
+    }
+    else{
+      this.hiringList.splice(index, 1);
+    }
+
+    console.log(this.hiringList);
+  }
+
+  confirmHiring(){
+
+    let dialogRef = this.dialog.open(HireDevelopersComponent, {
+      data: {
+        developers: this.hiringList,
+        mode: 'edit'
+      },
       width: '550px',
     });
 

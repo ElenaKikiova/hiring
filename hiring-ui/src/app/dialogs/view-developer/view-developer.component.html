@@ -81,7 +81,7 @@
 
   </mat-list>
 
-  <mat-list *ngIf="data.mode == 'edit'">
+  <mat-list *ngIf="data.mode == 'edit' || data.mode == 'create'">
 
     <form [formGroup]="developerForm" >
 
@@ -165,7 +165,9 @@
   <div mat-dialog-actions>
     <button mat-button (click)="closeDialog()">Close</button>
     <button 
-      mat-button cdkFocusInitial
+      mat-flat-button color="primary"
       (click)="saveChanges()"
-      *ngIf="data.mode == 'edit'">Save changes</button>
+      [disabled]="!developerForm.valid"
+      *ngIf="data.mode == 'edit' || data.mode == 'create'">Save changes</button>
+
   </div>

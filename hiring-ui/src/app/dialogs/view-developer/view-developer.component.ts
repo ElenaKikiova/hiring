@@ -30,6 +30,23 @@ export class ViewDeveloperComponent implements OnInit{
     this.technologies = ["Javascript", "Java", ".NET", "Flutter", "Python", "PHP"];
     this.languages = ["English", "Serbian", "Bulgarian"];
 
+    if(this.data.developer == null){
+      this.data.developer =  {
+        "id": "",
+        "name": "",
+        "email": "",
+        "phone": "",
+        "location": "",
+        "pfp": "",
+        "price": "",
+        "technology": "",
+        "description": "",
+        "years": "",
+        "native_lang": "",
+        "linkedIn": ""
+      }
+    }
+
     this.developerForm = new FormGroup({
 
       pfp: new FormControl(this.data.developer.pfp, [

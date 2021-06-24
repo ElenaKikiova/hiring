@@ -18,17 +18,21 @@ import {MatDividerModule} from '@angular/material/divider';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatChipsModule} from '@angular/material/chips';
+import {MatDatepickerModule} from '@angular/material/datepicker';
 
 import { ViewDeveloperComponent } from './dialogs/view-developer/view-developer.component';
-import { HireDeveloperComponent } from './dialogs/hire-developer/hire-developer.component';
+import { HireDevelopersComponent } from './dialogs/hire-developers/hire-developers.component';
 import { DeleteDeveloperComponent } from './dialogs/delete-developer/delete-developer.component';
+import { MatNativeDateModule } from '@angular/material/core';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     ViewDeveloperComponent,
-    HireDeveloperComponent,
+    HireDevelopersComponent,
     DeleteDeveloperComponent
   ],
   imports: [
@@ -45,9 +49,15 @@ import { DeleteDeveloperComponent } from './dialogs/delete-developer/delete-deve
     MatFormFieldModule,
     MatInputModule,
     MatSelectModule,
+    MatCheckboxModule,
+    MatChipsModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
     BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [
+    MatDatepickerModule
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
