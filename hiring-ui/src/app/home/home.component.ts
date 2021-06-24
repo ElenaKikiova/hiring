@@ -6,6 +6,7 @@ import { Developer } from '../models/developer.model';
 
 import { EditDeveloperComponent } from '../dialogs/edit-developer/edit-developer.component';
 import { ViewDeveloperComponent } from '../dialogs/view-developer/view-developer.component';
+import { HireDeveloperComponent } from '../dialogs/hire-developer/hire-developer.component';
 
 @Component({
   selector: 'app-home',
@@ -67,9 +68,33 @@ export class HomeComponent implements OnInit {
 
     let dialogRef = this.dialog.open(ViewDeveloperComponent, {
       data: developer,
-      height: '400px',
-      width: '400px',
+      width: '550px',
     });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed', result);
+
+      if(result == "hire"){
+
+        this.wantToHireDeveloper(developer);
+
+      }
+      
+    });
+  }
+
+  wantToHireDeveloper(developer: Developer){
+
+    let dialogRef = this.dialog.open(HireDeveloperComponent, {
+      data: developer,
+      width: '550px',
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed', result);
+      
+    });
+
   }
 
 }

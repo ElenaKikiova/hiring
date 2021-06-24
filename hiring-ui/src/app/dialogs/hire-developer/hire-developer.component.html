@@ -1,0 +1,33 @@
+<div mat-dialog-content>
+
+  <mat-list>
+
+    <mat-list-item class="name-and-contacts">
+
+      <img class="pfp" [src]="data.pfp != '' ? data.pfp : '../../../assets/no-pfp.png'">
+      
+      <div class="info">
+        <p>{{ data.name }}</p>
+        <p>
+          {{ data.email }}
+        </p>
+      </div>
+
+    </mat-list-item>
+
+    <mat-divider></mat-divider>
+
+    <mat-list-item> 
+
+      Yuusss hire this boi
+
+    </mat-list-item>
+
+  </mat-list>
+
+  <div mat-dialog-actions>
+    <button mat-button (click)="closeDialog()">Cancel</button>
+    <button mat-button mat-dialog-close="hire" cdkFocusInitial>Confirm</button>
+  </div>
+ 
+</div>
