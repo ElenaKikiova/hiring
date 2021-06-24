@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -22,14 +21,15 @@ import {MatSelectModule} from '@angular/material/select';
 
 import { ViewDeveloperComponent } from './dialogs/view-developer/view-developer.component';
 import { HireDeveloperComponent } from './dialogs/hire-developer/hire-developer.component';
+import { DeleteDeveloperComponent } from './dialogs/delete-developer/delete-developer.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
     ViewDeveloperComponent,
-    HireDeveloperComponent
+    HireDeveloperComponent,
+    DeleteDeveloperComponent
   ],
   imports: [
     BrowserModule,
