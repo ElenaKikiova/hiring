@@ -83,6 +83,22 @@ export class HomeComponent implements OnInit {
     });
   }
 
+  
+  editDeveloper(developer: Developer){
+    console.log(developer);
+
+    let dialogRef = this.dialog.open(EditDeveloperComponent, {
+      data: developer,
+      width: '550px',
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed', result);
+
+      
+    });
+  }
+
   wantToHireDeveloper(developer: Developer){
 
     let dialogRef = this.dialog.open(HireDeveloperComponent, {

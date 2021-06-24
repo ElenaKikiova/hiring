@@ -1,5 +1,5 @@
 import {Component, Inject} from '@angular/core';
-import {MatDialog, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 
 import { Developer } from '../../models/developer.model';
 
@@ -10,9 +10,21 @@ import { Developer } from '../../models/developer.model';
 })
 export class EditDeveloperComponent {
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: Developer) {
+  technologies: String[] = [];
+  languages: String[] = [];
 
+  constructor(
+    public dialogRef: MatDialogRef<EditDeveloperComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: Developer
+    ) {
 
+    this.technologies = ["Javascript", "Java", ".NET", "Flutter", "Python", "PHP"];
+    this.languages = ["English", "Serbian", "Bulgarian"];
+
+  }
+
+  closeDialog(){
+    this.dialogRef.close();
   }
 
 }

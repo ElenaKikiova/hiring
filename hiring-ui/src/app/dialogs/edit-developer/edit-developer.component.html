@@ -1,4 +1,65 @@
-<h1 mat-dialog-title>Edit developer data</h1>
 <div mat-dialog-content>
- {{ data | json }}
+
+  <mat-list>
+
+    <mat-list-item class="name-and-contacts">
+
+      <img class="pfp" [src]="data.pfp != '' ? data.pfp : '../../../assets/no-pfp.png'">
+      
+      <div class="info">
+        <p>{{ data.name }}</p>
+        <p>
+          {{ data.email }}
+        </p>
+      </div>
+
+    </mat-list-item>
+
+    <mat-divider></mat-divider>
+
+    <mat-list-item> 
+
+      <mat-icon aria-hidden="false" aria-label="Location">location_on</mat-icon>
+
+      <span class="value"> {{ data.location }} </span>
+      
+    </mat-list-item>
+
+    <mat-list-item>
+      <mat-icon aria-hidden="false" aria-label="Phone">phone</mat-icon>
+
+      <span class="value"> {{ data.phone }} </span>
+    </mat-list-item>
+
+    <mat-list-item> 
+
+      <mat-icon aria-hidden="false" aria-label="Price">attach_money</mat-icon>
+
+      <span class="value"> ${{ data.price }}/h</span>
+      
+    </mat-list-item>
+
+    <mat-list-item> 
+
+      <mat-icon aria-hidden="false" aria-label="Technology">code</mat-icon>
+
+      <span class="value"> {{ technologies[data.technology] }} </span>
+      
+    </mat-list-item>
+
+    <mat-list-item> 
+
+      <mat-icon aria-hidden="false" aria-label="Native language">language</mat-icon>
+
+      <span class="value"> {{ languages[data.native_lang] }} </span>
+      
+    </mat-list-item>
+
+  </mat-list>
+
+  <div mat-dialog-actions>
+    <button mat-button (click)="closeDialog()">Close</button>
+    <button mat-button mat-dialog-close="hire" cdkFocusInitial>Hire</button>
+  </div>
+ 
 </div>
