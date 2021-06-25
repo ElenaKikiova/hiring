@@ -34,4 +34,11 @@ export class DeveloperService {
     );
   }
 
+  deleteDeveloper(id: String){
+    return this.http.post(
+      environment.serverUrl + '/deleteDeveloper',
+      {id: id}
+    );
+  }
+
 }

@@ -62,7 +62,7 @@ app.post("/editDeveloper", async (req, res) => {
   
   let developer = req.body.developer;
 
-  let update = await Developer.findOneAndUpdate(
+  let update = await Developer.updateOne(
     { _id: ObjectId(developer._id)},
     { 
       "name": developer.name,
@@ -81,6 +81,23 @@ app.post("/editDeveloper", async (req, res) => {
 
   if(update.err) throw update.err;
   else res.send(developer);
+  
+})
+
+
+app.post("/deleteDeveloper", async (req, res) => {
+
+  
+  let id = req.body.id;
+
+  console.log(id);
+
+  let del = await Developer.deleteOne(
+    { _id: ObjectId(id)}
+  )
+
+  if(del.err) throw del.err;
+  else res.send();
   
 })
 
