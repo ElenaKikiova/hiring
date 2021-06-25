@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import {MatDialog, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 import { Developer } from './models/developer.model';
 
@@ -27,7 +28,8 @@ export class AppComponent implements OnInit {
 
   constructor(
     public dialog: MatDialog,
-    public developerService: DeveloperService
+    public developerService: DeveloperService,
+    private snackBar: MatSnackBar
   ) { }
 
   ngOnInit(): void {
@@ -67,6 +69,8 @@ export class AppComponent implements OnInit {
           console.log(data);
 
           this.developerList.push(data);
+
+          this.snackBar.open("Developer added!", "OK");
   
         })
 
@@ -111,6 +115,8 @@ export class AppComponent implements OnInit {
           let index = this.developerList.findIndex((e) => e._id == data._id);
           console.log(index)
           this.developerList[index] = data;
+
+          this.snackBar.open("Developer info updated!", "OK");
   
         })
 
@@ -127,6 +133,9 @@ export class AppComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed', result);
+
+      
+      this.snackBar.open("Developer deleted!", "OK");
       
     });
 

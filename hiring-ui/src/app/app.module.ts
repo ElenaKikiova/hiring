@@ -6,7 +6,8 @@ import { AppComponent } from './app.component';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+
+import { HttpClientModule } from '@angular/common/http';
 
 // Material modules
 import {MatIconModule} from '@angular/material/icon';
@@ -22,6 +23,7 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatChipsModule} from '@angular/material/chips';
 import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 import { ViewDeveloperComponent } from './dialogs/view-developer/view-developer.component';
 import { HireDevelopersComponent } from './dialogs/hire-developers/hire-developers.component';
@@ -55,6 +57,7 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatChipsModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatSnackBarModule,
     BrowserAnimationsModule
   ],
   providers: [
