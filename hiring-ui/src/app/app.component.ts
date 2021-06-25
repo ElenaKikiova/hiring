@@ -38,36 +38,6 @@ export class AppComponent implements OnInit {
 
   async loadDevelopersData(){
 
-    // this.developerList.push({
-    //   "id": "abracadabra",
-    //   "name": "Andrew Smith",
-    //   "email": "andrews@gmail.com",
-    //   "phone": "0878787887",
-    //   "location": "Plovdiv, Bulgaria",
-    //   "pfp": "https://icons-for-free.com/iconfiles/png/512/business+costume+male+man+office+user+icon-1320196264882354682.png",
-    //   "price": 20,
-    //   "technology": 2,
-    //   "description": "Ala bala",
-    //   "years": 5,
-    //   "native_lang": 0,
-    //   "linkedIn": "https://aaa.kdflh"
-    // })
-
-    // this.developerList.push({
-    //   "id": "rehht",
-    //   "name": "Rita Smith",
-    //   "email": "rita@gmail.com",
-    //   "phone": "5654654648",
-    //   "location": "Sofia, Bulgaria",
-    //   "pfp": "",
-    //   "price": 23,
-    //   "technology": 1,
-    //   "description": "t43t4t",
-    //   "years": 6,
-    //   "native_lang": 1,
-    //   "linkedIn": ""
-    // })
-
     this.developerService.getDevelopers().subscribe(async (data: any) => {
       console.log(data);
 
@@ -83,7 +53,7 @@ export class AppComponent implements OnInit {
     let dialogRef = this.dialog.open(ViewDeveloperComponent, {
       data: {
         developer: null,
-        mode: 'create'
+        mode: 'add'
       },
       width: '550px',
     });
@@ -91,9 +61,14 @@ export class AppComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed', result);
 
-      if(result == "hire"){
+      if(result != null){
 
-        
+        this.developerService.addDeveloper(result).subscribe(async (data: any) => {
+          console.log(data);
+
+          this.developerList.push(data);
+  
+        })
 
       }
       

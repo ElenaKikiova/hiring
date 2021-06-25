@@ -91,7 +91,6 @@ export class ViewDeveloperComponent implements OnInit{
       ]),
   
       description: new FormControl(this.data.developer.description, [
-        Validators.required,
         Validators.pattern(appConstants.PATTERNS.DESCRIPTION)
       ]),
   
@@ -178,10 +177,10 @@ export class ViewDeveloperComponent implements OnInit{
   }
 
 
-  saveChanges(){
+  save(){
 
     let developer: Developer = {
-      "id": "",
+      "_id": this.data._id || "",
       "name": this.developerForm.controls.name.value,
       "email": this.developerForm.controls.email.value,
       "phone": this.developerForm.controls.phone.value,
@@ -196,6 +195,8 @@ export class ViewDeveloperComponent implements OnInit{
     }
 
     console.log(developer);
+
+    this.dialogRef.close(developer);
   }
 
   closeDialog(){

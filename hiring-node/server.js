@@ -27,6 +27,56 @@ app.get("/getDevelopers", async (req, res) => {
 })
 
 
+app.post("/addDeveloper", async (req, res) => {
+
+  
+  let developer = req.body.developer;
+
+  // let update = await Developer.findOneAndUpdate(
+  //   { _id: ObjectId(developer._id)},
+  //   { 
+  //     "name": developer.name,
+  //     "email": developer.email,
+  //     "phone": developer.phone,
+  //     "location": developer.location,
+  //     "pfp": developer.pfp,
+  //     "price": developer.number,
+  //     "technology": developer.technology,
+  //     "description": developer.description,
+  //     "years": developer.years,
+  //     "native_lang": developer.native_lang,
+  //     "linkedIn": developer.linkedIn,
+  //   },
+  //   { upsert: true }
+  // );
+
+  let add = await new Developer(
+    {
+      "name": developer.name,
+      "email": developer.email,
+      "phone": developer.phone,
+      "location": developer.location,
+      "pfp": developer.pfp,
+      "price": developer.number,
+      "technology": developer.technology,
+      "description": developer.description,
+      "years": developer.years,
+      "native_lang": developer.native_lang,
+      "linkedIn": developer.linkedIn,
+    }
+  ).save().then((savedDeveloper, err) => {
+
+    if(err) throw err;
+    
+    console.log(savedDeveloper)
+
+    res.send(savedDeveloper);
+  });
+  
+})
+
+
+
 // -------------------Listen--------------------- //
 
 let server = app.listen(port, function(){
