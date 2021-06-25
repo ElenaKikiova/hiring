@@ -117,6 +117,8 @@ app.post("/hireDevelopers", async (req, res) => {
       startDate: data.startDate,
       endDate: data.endDate
     })
+
+    hiring[i].save()
   }
 
   console.log(hiring);

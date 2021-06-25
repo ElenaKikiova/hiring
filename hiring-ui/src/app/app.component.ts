@@ -194,8 +194,7 @@ export class AppComponent implements OnInit {
         this.developerService.hireDevelopers(result).subscribe(async (data: any) => {
           console.log(data);
           
-          // this.snackBar.open("Developer deleted!", "OK");
-
+          this.snackBar.open("Developers hired!", "OK");
   
         })
 
