@@ -4,7 +4,9 @@
 
     <mat-list-item class="name-and-contacts">
 
-      <img class="pfp" [src]="data.developer.pfp != '' ? data.developer.pfp : '../../../assets/no-pfp.png'">
+      <img class="pfp" 
+        [src]="data.developer.pfp != '' ? data.developer.pfp : '../../../assets/no-pfp.png'" 
+        onerror="this.src='../../../assets/no-pfp.png'">
       
       <div class="info">
         <p>{{ data.developer.name }}</p>
@@ -86,7 +88,9 @@
     <form [formGroup]="developerForm">
 
       <mat-list-item class="pfp-preview">
-        <img class="pfp" [src]="developerForm.controls.pfp.value != '' ? developerForm.controls.pfp.value : '../../../assets/no-pfp.png'">
+        <img class="pfp" 
+          [src]="developerForm.controls.pfp.value != '' ? developerForm.controls.pfp.value : '../../../assets/no-pfp.png'"
+          onerror="this.src='../../../assets/no-pfp.png'">
       </mat-list-item>
         
       <mat-list-item>
