@@ -41,10 +41,10 @@ export class DeveloperService {
     );
   }
 
-  hireDevelopers(developers: Developer[]){
+  hireDevelopers(data: any){
     return this.http.post(
       environment.serverUrl + '/hireDevelopers',
-      {developers: developers}
+      {data: data}
     );
   }
 

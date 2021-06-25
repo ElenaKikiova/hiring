@@ -38,7 +38,11 @@ export class HireDevelopersComponent {
 
   confirmHire(){
     console.log(this.data.developers)
-    this.dialogRef.close( this.data.developers);
+    this.dialogRef.close({
+      developers: this.data.developers,
+      startDate: 'ew',
+      endDate: 'ew'
+    });
   }
 
   closeDialog(){

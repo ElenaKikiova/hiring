@@ -7,6 +7,7 @@ const ObjectId = require('mongodb').ObjectID;
 const dbConnection = require('./dbConnection');
 
 const Developer = require('./schemas/developerSchema');
+const Hiring = require('./schemas/hiringSchema');
 
 const port = process.env.PORT || 8080;
 
@@ -105,15 +106,21 @@ app.post("/deleteDeveloper", async (req, res) => {
 app.post("/hireDevelopers", async (req, res) => {
 
   
-  let developers = req.body.developers;
+  let data = req.body.data;
+  console.log(data)
 
-  console.log(developers);
+  let hiring = [];
 
-  // let del = await Developer.deleteOne(
-  //   { _id: ObjectId(id)}
-  // )
+  for(let i = 0; i < data.developers.length; i++){
+     hiring[i] = new Hiring({
+      developerId: data.developers[i]._id,
+      startDate: data.startDate,
+      endDate: data.endDate
+    })
+  }
 
-  // if(del.err) throw del.err;
+  console.log(hiring);
+
   res.send();
   
 })
