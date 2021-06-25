@@ -46,7 +46,7 @@ export class AppComponent implements OnInit {
       "description": "Ala bala",
       "years": 5,
       "native_lang": 0,
-      "linkedIn": "aaa.kdflh"
+      "linkedIn": "https://aaa.kdflh"
     })
 
     this.developerList.push({
