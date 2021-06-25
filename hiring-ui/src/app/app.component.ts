@@ -102,6 +102,20 @@ export class AppComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed', result);
+
+      if(result != null){
+
+        this.developerService.editDeveloper(result).subscribe(async (data: any) => {
+          console.log(data);
+
+          let index = this.developerList.findIndex((e) => e._id == data._id);
+          console.log(index)
+          this.developerList[index] = data;
+  
+        })
+
+      }
+
     });
   }
 

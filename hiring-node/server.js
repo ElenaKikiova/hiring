@@ -28,27 +28,8 @@ app.get("/getDevelopers", async (req, res) => {
 
 
 app.post("/addDeveloper", async (req, res) => {
-
   
   let developer = req.body.developer;
-
-  // let update = await Developer.findOneAndUpdate(
-  //   { _id: ObjectId(developer._id)},
-  //   { 
-  //     "name": developer.name,
-  //     "email": developer.email,
-  //     "phone": developer.phone,
-  //     "location": developer.location,
-  //     "pfp": developer.pfp,
-  //     "price": developer.number,
-  //     "technology": developer.technology,
-  //     "description": developer.description,
-  //     "years": developer.years,
-  //     "native_lang": developer.native_lang,
-  //     "linkedIn": developer.linkedIn,
-  //   },
-  //   { upsert: true }
-  // );
 
   let add = await new Developer(
     {
@@ -57,7 +38,7 @@ app.post("/addDeveloper", async (req, res) => {
       "phone": developer.phone,
       "location": developer.location,
       "pfp": developer.pfp,
-      "price": developer.number,
+      "price": developer.price,
       "technology": developer.technology,
       "description": developer.description,
       "years": developer.years,
@@ -72,6 +53,34 @@ app.post("/addDeveloper", async (req, res) => {
 
     res.send(savedDeveloper);
   });
+  
+})
+
+
+app.post("/editDeveloper", async (req, res) => {
+
+  
+  let developer = req.body.developer;
+
+  let update = await Developer.findOneAndUpdate(
+    { _id: ObjectId(developer._id)},
+    { 
+      "name": developer.name,
+      "email": developer.email,
+      "phone": developer.phone,
+      "location": developer.location,
+      "pfp": developer.pfp,
+      "price": developer.price,
+      "technology": developer.technology,
+      "description": developer.description,
+      "years": developer.years,
+      "native_lang": developer.native_lang,
+      "linkedIn": developer.linkedIn,
+    }
+  )
+
+  if(update.err) throw update.err;
+  else res.send(developer);
   
 })
 

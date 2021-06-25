@@ -32,7 +32,7 @@ export class ViewDeveloperComponent implements OnInit{
 
     if(this.data.developer == null){
       this.data.developer =  {
-        "id": "",
+        "_id": "",
         "name": "",
         "email": "",
         "phone": "",
@@ -180,7 +180,7 @@ export class ViewDeveloperComponent implements OnInit{
   save(){
 
     let developer: Developer = {
-      "_id": this.data._id || "",
+      "_id": this.data.developer._id || "",
       "name": this.developerForm.controls.name.value,
       "email": this.developerForm.controls.email.value,
       "phone": this.developerForm.controls.phone.value,

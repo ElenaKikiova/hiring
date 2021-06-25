@@ -27,4 +27,11 @@ export class DeveloperService {
     );
   }
 
+  editDeveloper(developer: Developer){
+    return this.http.post(
+      environment.serverUrl + '/editDeveloper',
+      {developer: developer}
+    );
+  }
+
 }
