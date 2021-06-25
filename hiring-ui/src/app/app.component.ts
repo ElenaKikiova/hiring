@@ -18,7 +18,7 @@ export class AppComponent implements OnInit {
 
   developerList: Developer[] = [];
 
-  hiringMode: Boolean = true;
+  hiringMode: Boolean = false;
 
   hiringList: Developer[] = [];
 

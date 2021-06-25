@@ -75,7 +75,7 @@
 
       <mat-icon aria-hidden="false" aria-label="LinkedIn">link</mat-icon>
 
-      <span class="value"> <a [href]="data.developer.linkedIn">{{ data.developer.linkedIn }}</a> </span>
+      <span class="value"> <a [href]="data.developer.linkedIn" tabindex="-1">{{ data.developer.linkedIn }}</a> </span>
       
     </mat-list-item>
 
@@ -83,87 +83,138 @@
 
   <mat-list *ngIf="data.mode == 'edit' || data.mode == 'create'">
 
-    <form [formGroup]="developerForm" >
+    <form [formGroup]="developerForm">
 
-      <img class="pfp" [src]="developerForm.controls.pfp.value != '' ? developerForm.controls.pfp.value : '../../../assets/no-pfp.png'">
+      <mat-list-item class="pfp-preview">
+        <img class="pfp" [src]="developerForm.controls.pfp.value != '' ? developerForm.controls.pfp.value : '../../../assets/no-pfp.png'">
+      </mat-list-item>
+        
+      <mat-list-item>
 
-      <mat-form-field appearance="fill">
-        <mat-label>Profile picture</mat-label>
+        <mat-form-field appearance="fill">
+          <mat-label>Profile picture</mat-label>
 
-        <input matInput formControlName="pfp" required>
-        <mat-error *ngIf="developerForm.controls.pfp.invalid">{{getErrorMessage("pfp")}}</mat-error>
-      </mat-form-field>
+          <input matInput formControlName="pfp" required>
+          <mat-error *ngIf="developerForm.controls.pfp.invalid">{{getErrorMessage("pfp")}}</mat-error>
+        </mat-form-field>
 
-      <mat-form-field appearance="fill">
-        <mat-label>Full name</mat-label>
-        <input matInput formControlName="name" required>
-        <mat-error *ngIf="developerForm.controls.name.invalid">{{getErrorMessage("name")}}</mat-error>
-      </mat-form-field>
+      </mat-list-item>
+
+      <mat-list-item>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Full name</mat-label>
+          <input matInput formControlName="name" required>
+          <mat-error *ngIf="developerForm.controls.name.invalid">{{getErrorMessage("name")}}</mat-error>
+        </mat-form-field>
+
+      </mat-list-item>
+      
+      <mat-list-item>
+        
+        <mat-form-field appearance="fill">
+          <mat-label>Email</mat-label>
+          <input matInput formControlName="email" required>
+          <mat-error *ngIf="developerForm.controls.email.invalid">{{getErrorMessage("email")}}</mat-error>
+        </mat-form-field>
 
       
-      <mat-form-field appearance="fill">
-        <mat-label>Email</mat-label>
-        <input matInput formControlName="email" required>
-        <mat-error *ngIf="developerForm.controls.email.invalid">{{getErrorMessage("email")}}</mat-error>
-      </mat-form-field>
+      </mat-list-item>
+      
+      <mat-list-item>
 
-      <mat-form-field appearance="fill">
-        <mat-label>Location</mat-label>
-        <input matInput formControlName="location" required>
-        <mat-error *ngIf="developerForm.controls.location.invalid">{{getErrorMessage("location")}}</mat-error>
-      </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Location</mat-label>
+          <input matInput formControlName="location" required>
+          <mat-error *ngIf="developerForm.controls.location.invalid">{{getErrorMessage("location")}}</mat-error>
+        </mat-form-field>
 
-      <mat-form-field appearance="fill">
-        <mat-label>Phone number</mat-label>
-        <input matInput formControlName="phone" required>
-        <mat-error *ngIf="developerForm.controls.phone.invalid">{{getErrorMessage("phone")}}</mat-error>
-      </mat-form-field>
+      </mat-list-item>
+        
+      <mat-list-item>
 
-      <mat-form-field appearance="fill">
-        <mat-label>Price per hour</mat-label>
-        <input matInput formControlName="price" required>
-        <span matPrefix>$ &nbsp;</span>
-        <mat-error *ngIf="developerForm.controls.price.invalid">{{getErrorMessage("price")}}</mat-error>
-      </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Phone number</mat-label>
+          <input matInput formControlName="phone" required>
+          <mat-error *ngIf="developerForm.controls.phone.invalid">{{getErrorMessage("phone")}}</mat-error>
+        </mat-form-field>
+        
+      </mat-list-item>
+        
+      <mat-list-item>
 
-      <mat-form-field appearance="fill">
-        <mat-label>Technology</mat-label>
-        <mat-select formControlName="technology" required>
-          <mat-option *ngFor="let t of technologies; let i = index" [value]="i">{{ t}}</mat-option>
-        </mat-select>
-      </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Price per hour</mat-label>
+          <input matInput formControlName="price" required>
+          <span matPrefix>$ &nbsp;</span>
+          <mat-error *ngIf="developerForm.controls.price.invalid">{{getErrorMessage("price")}}</mat-error>
+        </mat-form-field>
+        
+      </mat-list-item>
+        
+      <mat-list-item>
 
-      <mat-form-field appearance="fill">
-        <mat-label>Description</mat-label>
-        <textarea matInput formControlName="description"></textarea>
-        <mat-error *ngIf="developerForm.controls.description.invalid">{{getErrorMessage("description")}}</mat-error>
-      </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Technology</mat-label>
+          <mat-select formControlName="technology" required>
+            <mat-option *ngFor="let t of technologies; let i = index" [value]="i">{{ t}}</mat-option>
+          </mat-select>
+        </mat-form-field>
 
-      <mat-form-field appearance="fill">
-        <mat-label>Native language</mat-label>
-        <mat-select formControlName="language">
-          <mat-option *ngFor="let l of languages; let i = index" [value]="i">{{ l}}</mat-option>
-        </mat-select>
-      </mat-form-field>
+        
+      </mat-list-item>
+        
+      <mat-list-item>
 
-      <mat-form-field appearance="fill">
-        <mat-label>Years of experience</mat-label>
-        <input matInput formControlName="years" required>
-        <mat-error *ngIf="developerForm.controls.years.invalid">{{getErrorMessage("years")}}</mat-error>
-      </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Description</mat-label>
+          <textarea matInput formControlName="description"></textarea>
+          <mat-error *ngIf="developerForm.controls.description.invalid">{{getErrorMessage("description")}}</mat-error>
+        </mat-form-field>
 
-      <mat-form-field appearance="fill">
-        <mat-label>Linked in</mat-label>
-        <input matInput formControlName="linkedIn">
-        <mat-error *ngIf="developerForm.controls.linkedIn.invalid">{{getErrorMessage("linkedIn")}}</mat-error>
-      </mat-form-field>
+        
+      </mat-list-item>
+        
+      <mat-list-item>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Native language</mat-label>
+          <mat-select formControlName="language">
+            <mat-option *ngFor="let l of languages; let i = index" [value]="i">{{ l}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        
+      </mat-list-item>
+        
+      <mat-list-item>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Years of experience</mat-label>
+          <input matInput formControlName="years" required>
+          <mat-error *ngIf="developerForm.controls.years.invalid">{{getErrorMessage("years")}}</mat-error>
+        </mat-form-field>
+
+        
+      </mat-list-item>
+        
+      <mat-list-item>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Linked in</mat-label>
+          <input matInput formControlName="linkedIn">
+          <mat-error *ngIf="developerForm.controls.linkedIn.invalid">{{getErrorMessage("linkedIn")}}</mat-error>
+        </mat-form-field>
+
+      
+      </mat-list-item>
 
     </form>
 
   </mat-list>
 
   <div mat-dialog-actions>
-    <button mat-button (click)="closeDialog()">Close</button>
+    <button mat-button (click)="closeDialog()" tabindex="-1">Close</button>
     <button 
       mat-flat-button color="primary"
       (click)="saveChanges()"

@@ -32,7 +32,8 @@
 
         <mat-list-item *ngFor="let developer of developerList"> 
 
-          <mat-checkbox (click)="checkHiring(developer)"></mat-checkbox>
+          <mat-checkbox [style.opacity]="hiringMode ? '1' : '0'"
+            (click)="checkHiring(developer)"></mat-checkbox>
       
           <span> {{ developer.name }} </span>
       
