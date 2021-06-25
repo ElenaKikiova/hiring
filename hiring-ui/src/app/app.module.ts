@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 // Material modules
 import {MatIconModule} from '@angular/material/icon';
@@ -37,6 +38,7 @@ import { MatNativeDateModule } from '@angular/material/core';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     ReactiveFormsModule,
     MatIconModule,
@@ -61,3 +63,5 @@ import { MatNativeDateModule } from '@angular/material/core';
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+

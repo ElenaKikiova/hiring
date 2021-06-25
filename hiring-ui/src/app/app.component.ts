@@ -8,6 +8,9 @@ import { ViewDeveloperComponent } from './dialogs/view-developer/view-developer.
 import { HireDevelopersComponent } from './dialogs/hire-developers/hire-developers.component';
 import { DeleteDeveloperComponent } from './dialogs/delete-developer/delete-developer.component';
 
+// Services
+import { DeveloperService } from './services/developer.service';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -23,7 +26,8 @@ export class AppComponent implements OnInit {
   hiringList: Developer[] = [];
 
   constructor(
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    public developerService: DeveloperService
   ) { }
 
   ngOnInit(): void {
@@ -32,36 +36,42 @@ export class AppComponent implements OnInit {
     
   }
 
-  loadDevelopersData(){
+  async loadDevelopersData(){
 
-    this.developerList.push({
-      "id": "abracadabra",
-      "name": "Andrew Smith",
-      "email": "andrews@gmail.com",
-      "phone": "0878787887",
-      "location": "Plovdiv, Bulgaria",
-      "pfp": "https://icons-for-free.com/iconfiles/png/512/business+costume+male+man+office+user+icon-1320196264882354682.png",
-      "price": 20,
-      "technology": 2,
-      "description": "Ala bala",
-      "years": 5,
-      "native_lang": 0,
-      "linkedIn": "https://aaa.kdflh"
-    })
+    // this.developerList.push({
+    //   "id": "abracadabra",
+    //   "name": "Andrew Smith",
+    //   "email": "andrews@gmail.com",
+    //   "phone": "0878787887",
+    //   "location": "Plovdiv, Bulgaria",
+    //   "pfp": "https://icons-for-free.com/iconfiles/png/512/business+costume+male+man+office+user+icon-1320196264882354682.png",
+    //   "price": 20,
+    //   "technology": 2,
+    //   "description": "Ala bala",
+    //   "years": 5,
+    //   "native_lang": 0,
+    //   "linkedIn": "https://aaa.kdflh"
+    // })
 
-    this.developerList.push({
-      "id": "rehht",
-      "name": "Rita Smith",
-      "email": "rita@gmail.com",
-      "phone": "5654654648",
-      "location": "Sofia, Bulgaria",
-      "pfp": "",
-      "price": 23,
-      "technology": 1,
-      "description": "t43t4t",
-      "years": 6,
-      "native_lang": 1,
-      "linkedIn": ""
+    // this.developerList.push({
+    //   "id": "rehht",
+    //   "name": "Rita Smith",
+    //   "email": "rita@gmail.com",
+    //   "phone": "5654654648",
+    //   "location": "Sofia, Bulgaria",
+    //   "pfp": "",
+    //   "price": 23,
+    //   "technology": 1,
+    //   "description": "t43t4t",
+    //   "years": 6,
+    //   "native_lang": 1,
+    //   "linkedIn": ""
+    // })
+
+    this.developerService.getDevelopers().subscribe(async (data: any) => {
+      console.log(data);
+
+      this.developerList = data;
     })
 
     console.log(this.developerList)
