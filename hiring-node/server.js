@@ -102,6 +102,23 @@ app.post("/deleteDeveloper", async (req, res) => {
 })
 
 
+app.post("/hireDevelopers", async (req, res) => {
+
+  
+  let developers = req.body.developers;
+
+  console.log(developers);
+
+  // let del = await Developer.deleteOne(
+  //   { _id: ObjectId(id)}
+  // )
+
+  // if(del.err) throw del.err;
+  res.send();
+  
+})
+
+
 
 // -------------------Listen--------------------- //
 

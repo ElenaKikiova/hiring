@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChildren, QueryList, ElementRef } from '@angular/core';
 
 import {MatDialog, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import {MatSnackBar} from '@angular/material/snack-bar';
@@ -11,6 +11,7 @@ import { DeleteDeveloperComponent } from './dialogs/delete-developer/delete-deve
 
 // Services
 import { DeveloperService } from './services/developer.service';
+import { MatCheckbox } from '@angular/material/checkbox';
 
 @Component({
   selector: 'app-root',
@@ -25,6 +26,9 @@ export class AppComponent implements OnInit {
   hiringMode: Boolean = false;
 
   hiringList: Developer[] = [];
+
+  
+  @ViewChildren("checkbox") checkboxes: QueryList<MatCheckbox>;
 
   constructor(
     public dialog: MatDialog,
@@ -177,14 +181,32 @@ export class AppComponent implements OnInit {
 
     let dialogRef = this.dialog.open(HireDevelopersComponent, {
       data: {
-        developers: this.hiringList,
-        mode: 'edit'
+        developers: this.hiringList
       },
       width: '550px',
     });
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed', result);
+
+      if(result != null){
+
+        this.developerService.hireDevelopers(result).subscribe(async (data: any) => {
+          console.log(data);
+          
+          // this.snackBar.open("Developer deleted!", "OK");
+
+          this.hiringList = [];
+          this.hiringMode = false;
+
+
+          this.checkboxes.forEach((element) => {
+            element.checked = false;
+          });
+  
+        })
+
+      }
       
     });
 

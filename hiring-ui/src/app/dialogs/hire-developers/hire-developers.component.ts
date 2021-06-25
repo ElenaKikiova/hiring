@@ -31,12 +31,14 @@ export class HireDevelopersComponent {
 
     let index = this.data.developers.indexOf(developer);
     if(index == -1){
-      this.data.developersgList.push(developer);
-    }
-    else{
       this.data.developers.splice(index, 1);
     }
 
+  }
+
+  confirmHire(){
+    console.log(this.data.developers)
+    this.dialogRef.close( this.data.developers);
   }
 
   closeDialog(){

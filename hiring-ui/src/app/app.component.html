@@ -19,7 +19,7 @@
         </button>
 
         <button mat-button aria-label="Add a developer" (click)="addDeveloper()">
-          <mat-icon>add</mat-icon> Add a developer
+          <mat-icon>add</mat-icon> Add 
         </button>
 
       </div>
@@ -32,8 +32,10 @@
 
         <mat-list-item *ngFor="let developer of developerList"> 
 
-          <mat-checkbox [style.opacity]="hiringMode ? '1' : '0'"
-            (click)="checkHiring(developer)"></mat-checkbox>
+          <mat-checkbox 
+            #checkbox
+            [style.opacity]="hiringMode ? '1' : '0'" [checked]="false"
+            (change)="checkHiring(developer)"></mat-checkbox>
 
           <img class="pfp" 
             [src]="developer.pfp != '' ? developer.pfp : '../../assets/no-pfp.png'" 
