@@ -24,6 +24,7 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatChipsModule} from '@angular/material/chips';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
 
 import { ViewDeveloperComponent } from './dialogs/view-developer/view-developer.component';
 import { HireDevelopersComponent } from './dialogs/hire-developers/hire-developers.component';
@@ -58,6 +59,7 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatDatepickerModule,
     MatNativeDateModule,
     MatSnackBarModule,
+    MatAutocompleteModule,
     BrowserAnimationsModule
   ],
   providers: [

@@ -28,7 +28,7 @@ export class AppComponent implements OnInit {
   hiringList: Developer[] = [];
 
   
-  @ViewChildren("checkbox") checkboxes: QueryList<MatCheckbox>;
+  @ViewChildren("checkbox") checkboxes!: QueryList<MatCheckbox>;
 
   constructor(
     public dialog: MatDialog,
@@ -196,17 +196,19 @@ export class AppComponent implements OnInit {
           
           // this.snackBar.open("Developer deleted!", "OK");
 
-          this.hiringList = [];
-          this.hiringMode = false;
-
-
-          this.checkboxes.forEach((element) => {
-            element.checked = false;
-          });
   
         })
 
       }
+
+      
+      this.hiringList = [];
+
+      this.hiringMode = false;
+
+      this.checkboxes.forEach((element) => {
+        element.checked = false;
+      });
       
     });
 
