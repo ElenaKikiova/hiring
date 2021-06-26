@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-// const cors = require('cors');
+const cors = require('cors');
 
 const ObjectId = require('mongodb').ObjectID;
 
@@ -15,7 +15,7 @@ app.use(express.static('public'));
 app.use(express.json());
 app.set('view engine', 'ejs');
 
-// app.use(cors());
+app.use(cors());
 
 
 // -------------------ROUTES--------------------- //
