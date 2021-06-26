@@ -1,6 +1,5 @@
 const express = require('express');
 const app = express();
-const cors = require('cors');
 
 const ObjectId = require('mongodb').ObjectID;
 
@@ -14,8 +13,6 @@ const port = process.env.PORT || 8080;
 app.use(express.static('public'));
 app.use(express.json());
 app.set('view engine', 'ejs');
-
-app.use(cors());
 
 
 // -------------------ROUTES--------------------- //
