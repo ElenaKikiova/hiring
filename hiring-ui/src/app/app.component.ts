@@ -153,7 +153,6 @@ export class AppComponent implements OnInit {
 
       }
       
-      
     });
 
   }
@@ -162,6 +161,19 @@ export class AppComponent implements OnInit {
 
     this.hiringMode = true;
 
+  }
+
+  stopHiring(){
+
+      
+    this.hiringList = [];
+
+    this.hiringMode = false;
+
+    this.checkboxes.forEach((element) => {
+      element.checked = false;
+    });
+    
   }
 
   checkHiring(developer: Developer){
@@ -200,15 +212,8 @@ export class AppComponent implements OnInit {
 
       }
 
-      
-      this.hiringList = [];
+      this.stopHiring();
 
-      this.hiringMode = false;
-
-      this.checkboxes.forEach((element) => {
-        element.checked = false;
-      });
-      
     });
 
   }

@@ -52,7 +52,7 @@
   <div mat-dialog-actions>
     <button mat-button (click)="closeDialog()">Cancel</button>
 
-    <button mat-button (click)="confirmHire()" 
+    <button (click)="confirmHire()" mat-flat-button color="primary"
       [disabled]="hiringForm.invalid">
       Confirm
     </button>

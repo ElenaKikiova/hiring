@@ -1,29 +1,43 @@
 
-    <mat-toolbar>
+    <mat-toolbar color="primary">
+
+      <div class="toolbar-container">
       
-      <span>Prime Hiring</span>
-      <span class="example-spacer"></span>
+        <span>Prime Hiring</span>
+        <span class="example-spacer"></span>
 
-      <div class="toolbar-buttons">
+        <div class="toolbar-buttons">
 
-        <button 
-          mat-button aria-label="Hire developers" 
-          (click)="hireDevelopers()" *ngIf="hiringMode == false">
-          <mat-icon>work</mat-icon> Hire
-        </button>
+          <button 
+            mat-button aria-label="Hire developers" 
+            (click)="hireDevelopers()" *ngIf="hiringMode == false">
+            <mat-icon>work</mat-icon> Hire
+          </button>
 
-        <button 
-          color="primary" mat-flat-button aria-label="Hire developers" 
-          (click)="confirmHiring()" *ngIf="hiringMode == true"
-          [disabled]="hiringList.length == 0">
-          <mat-icon>work</mat-icon> Confirm hiring
-        </button>
+          <button 
+            color="accent" mat-flat-button aria-label="Hire developers" 
+            (click)="confirmHiring()" *ngIf="hiringMode == true"
+            [disabled]="hiringList.length == 0">
+            <mat-icon>work</mat-icon> Confirm hiring
+          </button>
 
-        <button mat-button aria-label="Add a developer" (click)="addDeveloper()">
-          <mat-icon>add</mat-icon> Add 
-        </button>
+          <button 
+            mat-button aria-label="Cancel hiring" 
+            (click)="stopHiring()" *ngIf="hiringMode == true">
+            <mat-icon>cancel</mat-icon> Cancel
+          </button>
+
+          <button 
+            mat-button aria-label="Add a developer" 
+            *ngIf="hiringMode == false"
+            (click)="addDeveloper()">
+            <mat-icon>add</mat-icon> Add 
+          </button>
+
+        </div>
 
       </div>
+
     </mat-toolbar>
 
 
