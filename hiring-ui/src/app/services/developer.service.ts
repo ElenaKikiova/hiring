@@ -41,6 +41,17 @@ export class DeveloperService {
     );
   }
 
+  checkDevelopersAvailability(ids: string[], startDate: string, endDate: string){
+    return this.http.post(
+      environment.serverUrl + '/checkDevelopersAvailability',
+      {
+        developerIds: ids,
+        startDate: startDate,
+        endDate: endDate
+      }
+    );
+  }
+
   hireDevelopers(data: any){
     return this.http.post(
       environment.serverUrl + '/hireDevelopers',

@@ -3,9 +3,9 @@
 const mongoose = require('mongoose');
 
 const HiringSchema = mongoose.Schema({
+  "developerId": { type: mongoose.Schema.Types.ObjectId, ref: 'Developer' },
   "startDate": String,
   "endDate": String,
-  "delevoperId": { type: mongoose.Schema.Types.ObjectId, ref: 'Developer' }
 },
 { collection: "hiring"}
 );

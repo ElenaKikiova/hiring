@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 const cors = require('cors');
-var fs = require('fs');
+
 const ObjectId = require('mongodb').ObjectID;
 
 const dbConnection = require('./dbConnection');
@@ -49,8 +49,6 @@ app.post("/addDeveloper", async (req, res) => {
   ).save().then((savedDeveloper, err) => {
 
     if(err) throw err;
-    
-    console.log(savedDeveloper)
 
     res.send(savedDeveloper);
   });
@@ -91,8 +89,6 @@ app.post("/deleteDeveloper", async (req, res) => {
   
   let id = req.body.id;
 
-  console.log(id);
-
   let del = await Developer.deleteOne(
     { _id: ObjectId(id)}
   )
@@ -105,15 +101,14 @@ app.post("/deleteDeveloper", async (req, res) => {
 
 app.post("/hireDevelopers", async (req, res) => {
 
-  
+
   let data = req.body.data;
-  console.log(data)
 
   let hiring = [];
 
   for(let i = 0; i < data.developers.length; i++){
      hiring[i] = new Hiring({
-      developerId: data.developers[i]._id,
+      developerId: ObjectId(data.developers[i]._id),
       startDate: data.startDate,
       endDate: data.endDate
     })
@@ -121,12 +116,37 @@ app.post("/hireDevelopers", async (req, res) => {
     hiring[i].save()
   }
 
-  console.log(hiring);
-
   res.send();
   
 })
 
+
+app.post("/checkDevelopersAvailability", async (req, res) => {
+
+  let developerIds = req.body.developerIds;
+  let startDate = req.body.startDate;
+  let endDate = req.body.endDate;
+
+  let busyDevs = [];
+
+ 
+  for(let i = 0; i < developerIds.length; i++){
+
+    let matchingDates = await Hiring.find({
+       developerId: ObjectId(developerIds[i]),
+       startDate: {$lte: startDate},
+       endDate: {$gte: endDate}
+      })
+
+
+    if(matchingDates.length > 0){
+      busyDevs.push(developerIds[i])
+    }
+
+  }
+
+  res.send({ "busyDevs": busyDevs});
+})
 
 
 // -------------------Listen--------------------- //

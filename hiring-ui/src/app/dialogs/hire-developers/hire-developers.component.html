@@ -31,6 +31,20 @@
 
       <mat-error *ngIf="previousDate()">You cant hire for past periods of time </mat-error>
 
+      <mat-error *ngIf="busyDevsNames.length > 0">
+
+        <span *ngFor="let dev of busyDevsNames; let i = index">
+          {{ dev }}<span *ngIf="busyDevsNames.length > 2 && i < busyDevsNames.length - 2">, </span>
+          <span *ngIf="busyDevsNames.length > 1 && i == busyDevsNames.length - 2"> and </span>
+        </span>
+
+        <span *ngIf="busyDevsNames.length > 1"> are </span>
+        <span *ngIf="busyDevsNames.length == 1"> is </span>
+
+        already hired during this period
+
+      </mat-error>
+
     </form>
 
   </mat-list>
