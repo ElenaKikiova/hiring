@@ -98,7 +98,7 @@
         <mat-form-field appearance="fill">
           <mat-label>Profile picture</mat-label>
 
-          <input matInput formControlName="pfp" required>
+          <input matInput formControlName="pfp">
           <mat-error *ngIf="developerForm.controls.pfp.invalid">{{getErrorMessage("pfp")}}</mat-error>
         </mat-form-field>
 
