@@ -77,7 +77,14 @@ export class HireDevelopersComponent implements OnInit{
     console.log(this.data.developers)
 
     let startDate = this.hiringForm.controls.startDate.value;
-    let endDate = this.hiringForm.controls.endDate.value
+    let endDate = this.hiringForm.controls.endDate.value;
+
+    startDate = new Date(startDate);
+    startDate.setUTCHours(24,0,0,0);
+    startDate = startDate.toISOString();
+    endDate = new Date(endDate);
+    endDate.setUTCHours(24,0,0,0);
+    endDate = endDate.toISOString();
 
     let ids = this.data.developers.map((dev: Developer) => dev._id);
     console.log(ids);
@@ -85,6 +92,7 @@ export class HireDevelopersComponent implements OnInit{
     this.developerService
       .checkDevelopersAvailability(ids, startDate, endDate)
       .subscribe(async (data: any) => {
+        console.log(startDate, endDate)
         console.log("Busy: ", data.busyDevs);
 
         if(data.busyDevs.length == 0){

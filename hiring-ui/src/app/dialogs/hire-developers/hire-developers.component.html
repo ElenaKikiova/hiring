@@ -21,8 +21,8 @@
       <mat-list-item>
 
         <mat-date-range-input [rangePicker]="picker">
-          <input matStartDate formControlName="startDate" placeholder="Start date">
-          <input matEndDate formControlName="endDate" placeholder="End date">
+          <input matStartDate formControlName="startDate" placeholder="Start date" (dateChange)="busyDevsNames = []">
+          <input matEndDate formControlName="endDate" placeholder="End date" (dateChange)="busyDevsNames = []">
         </mat-date-range-input>
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-date-range-picker #picker></mat-date-range-picker>
@@ -41,7 +41,7 @@
         <span *ngIf="busyDevsNames.length > 1"> are </span>
         <span *ngIf="busyDevsNames.length == 1"> is </span>
 
-        already hired during this period
+        already hired during this period. 
 
       </mat-error>
 
@@ -51,6 +51,7 @@
     
   <div mat-dialog-actions>
     <button mat-button (click)="closeDialog()">Cancel</button>
+
     <button mat-button (click)="confirmHire()" 
       [disabled]="hiringForm.invalid">
       Confirm
