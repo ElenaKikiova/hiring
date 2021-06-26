@@ -133,9 +133,25 @@ app.post("/checkDevelopersAvailability", async (req, res) => {
   for(let i = 0; i < developerIds.length; i++){
 
     let matchingDates = await Hiring.find({
-       developerId: ObjectId(developerIds[i]),
-       startDate: {$lte: startDate},
-       endDate: {$gte: endDate}
+        developerId: ObjectId(developerIds[i]),
+        $or: [ 
+          {  // Selected period is inside
+            startDate: {$lte: startDate},
+            endDate: {$gte: endDate}
+          },
+          { // Selected period starts inside and continues after
+            startDate: {$lte: startDate},
+            endDate: {$lte: endDate, $gte: startDate}
+          },
+          { // Selected period starts before and ends inside
+            startDate: {$gte: startDate, $lte: endDate},
+            endDate: {$gte: endDate}
+          },
+          {  // Selected period is starts before, continues inside and ends after
+            startDate: {$gte: startDate},
+            endDate: {$lte: endDate}
+          },
+        ]
       })
 
 

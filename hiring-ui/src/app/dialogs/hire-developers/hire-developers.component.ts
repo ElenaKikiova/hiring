@@ -98,6 +98,7 @@ export class HireDevelopersComponent implements OnInit{
         }
         else{
 
+          this.busyDevsNames = [];
 
           for(let i = 0; i < data.busyDevs.length; i++){
             this.busyDevsNames.push(
